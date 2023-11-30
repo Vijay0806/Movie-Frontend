@@ -1,38 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Sofia');
+/* @import url('https://fonts.googleapis.com/css?family=Audiowide'); */
+*{
+    
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+text-align: center;
+justify-content: center;
+align-items: center;
+}
+label{
+margin: 0 !important;
+}
+.home{
+background-image: url("https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bW92aWV8ZW58MHx8MHx8fDA%3D");
+min-width:100vw;
+min-height: 100vh;
+/* bottom: 20px;  */
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.movie-detail-container {
+max-width: 750px;
+padding: 16px;
+}
+.login-form,.logout{
+display: flex;
+flex-direction: column;
+gap: 16px;
+max-width: 400px;
+margin: 0 auto ;
+}
+/* .home {
+height: 100vh;
+font-weight: bold;
+font-size: 40px;
+text-align: center;
+margin-top: 40px;
+} */
+
+.movie__container {
+margin: 10px;
+width: 340px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.movie__name {
+font-size: 24px;
+}
+.eye{
+width: 15px;
+position: absolute;
+right:18%;
+top:64%;
+left:68%;
+
+}
+.movie__poster {
+height: 640px;
+width: 100%;
+object-fit: cover;
+}
+
+.color {
+margin: 460px;
+height: 140vh;
+margin-top: 40px;
+}
+
+.movie__specs {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.movie__list {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+gap: 1rem;
+justify-items: center;
+}
+
+.like>button {
+font-size: 20px;
+}
+
+.add-movie-form {
+height: 100vh;
+display: flex;
+flex-direction: column;
+width: 350px;
+gap: 1em;
+margin: 1rem auto;
+}
+.error_message{
+  color: red;
+  /* border: 1px solid red; */
+}
+.error-border{
+   border: 1px solid red;
+}
+
+.dark_mode{
+  left: 450px;
+  /* font-family: "Audiowide", sans-serif; */
+  font-family:"Sofia", sans-serif;
+  color: rgb(254, 184, 196) !important;
+  font-weight: 700;
+  
+}
+.dark_mode:hover{
+  color: rgb(69, 228, 6)!important;
+  font-weight: 700;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .font_mode{
+    font-family:"Sofia", sans-serif;
+    font-weight: 800;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
+  .log_out{
+    color:rgb(0, 255, 238)!important;
+    font-weight: 700;
+    }
+    .log_out:hover{
+      color:red!important;
+    font-weight: 700;
+    }
+
+    .movie__summary{
+      font-family: "Sofia", sans-serif;
+    }
+    .movie__name{
+      font-family:  "Trirong", serif;
+    }
+    .style_font{
+      font-family: "Sofia", sans-serif;
+    }
+    .style__font{
+      font-family: "Sofia", sans-serif;
+      cursor: pointer;
+    }
