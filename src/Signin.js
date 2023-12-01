@@ -58,7 +58,8 @@ const movieValidationShema = yup.object({
       <form onSubmit={handleSubmit} className="login-form" >
       <div className='main'>
       <input type='checkbox' id='chk' aria-hidden="true"></input>
-      <div className='signup'> 
+      <div className='signup'>
+        <h1 className='new-user'>New User Here!</h1> 
         <label for="chk" >Sign up</label>
         <input type='text'
           placeholder='Username'
@@ -68,6 +69,7 @@ const movieValidationShema = yup.object({
            value={values.username}
            name='username'
            ></input>
+           {touched.username && errors.username && <div className="error-message">{errors.username}</div>}
         <input type='email'
          name='email' placeholder='Email' 
          required=""
@@ -75,12 +77,16 @@ const movieValidationShema = yup.object({
           onBlur={handleBlur}
           value={values.email}
          ></input>
+        {touched.email && errors.email && (
+              <div className="error-message">{errors.email}</div>
+            )}
         <input type={passwordType} name='password'
          placeholder='Password' required=""
          onChange={handleChange}
           onBlur={handleBlur}
           value={values.password}
          ></input>
+         {touched.password && errors.password && <div className="error-message">{errors.password}</div>}
      <span className="signup__eye" onClick={handleToggle}>{passwordIcon}</span> 
         <button id='button' type='submit'>Sign up</button>
       </div>

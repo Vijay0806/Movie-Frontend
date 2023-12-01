@@ -54,7 +54,7 @@ font-size: 24px;
 width: 15px;
 position: absolute;
 right:18%;
-top:64%;
+top:44%;
 left:68%;
 
 }
@@ -117,6 +117,7 @@ margin: 1rem auto;
   }
   .font_mode{
     font-family:"Sofia", sans-serif;
+    color: aqua !important;
     font-weight: 800;
   }
   .log_out{
@@ -141,3 +142,42 @@ margin: 1rem auto;
       font-family: "Sofia", sans-serif;
       cursor: pointer;
     }
+    .like_color:hover{
+      color: gold !important;
+    }
+    .dislike_color:hover{
+      color: rgb(255, 47, 0) !important;
+    }
+    .color__style{
+      font-family: "Sofia", sans-serif;
+    }
+    .fill-blue {
+      fill: rgb(242, 14, 170);
+    }
+    .star_button{
+      font-size: 1.5em; 
+      margin-top: 13px; 
+    }
+.font__mode{
+  color: aqua !important;
+}
+.font__mode:hover{
+  color: yellow !important;
+}
+.font_mode:hover{
+  color: yellow !important;
+}
+.sign_up{
+  color:aqua !important;
+}
+.register_new:hover{
+  color: orangered !important;
+  font-weight: 500;
+}
+.log_in:hover{
+  color: greenyellow !important;
+  font-weight: 700;
+}
+.error-message{
+  color: red;
+}

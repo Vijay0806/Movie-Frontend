@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import { Button, TextField } from '@mui/material';
@@ -21,8 +21,9 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
+import StarBorderPurple500Icon from '@mui/icons-material/StarBorderPurple500';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Signin from './Signin';
@@ -31,6 +32,7 @@ import { API } from './global';
 import axios from 'axios';
 import { API_URL } from './global';
 import {FaEye, FaEyeSlash} from 'react-icons/fa'
+import { blue } from '@mui/material/colors';
 const MOVIE = [
   {
     "id": "99",
@@ -127,14 +129,14 @@ function App() {
           <AppBar position="static">
             <Toolbar>
               <Button className='font_mode' color="inherit" onClick={() => navigate("/")}>🅷🅾🅼🅴</Button>
-              <Button color="inherit" onClick={() => navigate("/movies")}>𝕸𝖔𝖛𝖎𝖊 𝕯𝖊𝖙𝖆𝖎𝖑𝖘</Button>
+              <Button className='font__mode' color="inherit" onClick={() => navigate("/movies")}>𝕸𝖔𝖛𝖎𝖊 𝕯𝖊𝖙𝖆𝖎𝖑𝖘</Button>
               {roleId==0?<Button color="inherit" onClick={() => navigate("/add-movie")}>Add Movie</Button>:null}
               {roleId==0?<Button color="inherit" onClick={() => navigate("/update/:id")}>Edit Movie</Button>:null}
-              <Button color="inherit" onClick={() => navigate("/color")}>𝕮𝖔𝖑𝖔𝖗 𝕼𝖚𝖊𝖘𝖙</Button>
+              <Button  className='font__mode'color="inherit" onClick={() => navigate("/color")}>𝕮𝖔𝖑𝖔𝖗 𝕼𝖚𝖊𝖘𝖙</Button>
               <Button className='dark_mode' style={dk} color="inherit" startIcon={mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
                 onClick={() => setMode(mode === "light" ? "dark" : "light")}>𝕯𝖆𝖗𝖐 𝕸𝖔𝖉𝖊</Button>
-         {roleId? null:<Button color="inherit" onClick={() => navigate("/signup")}>𝕾𝖎𝖌𝖓𝖚𝖕</Button>}
-            {roleId ?<Button className='log_out' color="inherit" style={dk} onClick={()=>logout()}>𝕷𝖔𝖌𝖔𝖚𝖙</Button >: <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>}
+         {roleId? null:<Button className='sign_up register_new' color="inherit" onClick={() => navigate("/signup")}>𝕾𝖎𝖌𝖓𝖚𝖕</Button>}
+            {roleId ?<Button className='log_out' color="inherit" style={dk} onClick={()=>logout()}>𝕷𝖔𝖌𝖔𝖚𝖙</Button >: <Button className='sign_up log_in' color="inherit" onClick={() => navigate("/login")}>𝕷𝖔𝖌𝖎𝖓</Button>}
             </Toolbar>
           </AppBar>
 
@@ -187,87 +189,6 @@ function Edit(){
     </div>
   )
 }
-// function Update({details}) {
-//   const { handleSubmit, values, handleChange, handleBlur, touched, errors } =
-//   useFormik({
-//     initialValues: {
-//       name: details.name,
-//       poster: details.poster,
-//       rating: details.rating,
-//       summary: details.summary,
-//       trailer: details.trailer,
-      
-//     },
-//     validationSchema: movieValidationShema,
-//     onSubmit: (update) => {
-//        console.log("Form values:", update);
-//       updateUser(update);
-//     },
-//   });
-
-// const navigate = useNavigate();
-
-// const updateUser = (update)=>{
-//   fetch(`${API_URL}/${details.id}`,{
-//     method:"PUT",
-//     body:JSON.stringify(update),
-//     headers:{"Content-type":"application/json"},
-//   }).then(()=>navigate("/movies"));
-//   // navigate("/read")
-// };
-//   return (
-//     <form onSubmit={handleSubmit} className='add-movie-form'>
-//       <TextField
-//         label="name"
-//         variant='outlined'
-//         name="name"
-//         value={values.name}
-//         onChange={handleChange}onBlur={handleBlur}
-//       />
-//       {touched.name && errors.name ? errors.name : null}
-//       <TextField
-//         label="poster"
-//         variant='outlined'
-//         name="poster"
-//         value={values.poster}
-//         onChange={handleChange}
-//         onBlur={handleBlur}
-//       />
-//       {touched.poster && errors.poster ? errors.poster : null}
-
-//       <TextField
-//         label="rating"
-//         variant='outlined'
-//         name="rating"
-//         value={values.rating}
-//         onChange={handleChange}
-//         onBlur={handleBlur}
-//       />
-//       {touched.rating && errors.rating ? errors.rating : null}
-
-//       <TextField
-//         label="summary"
-//         variant='outlined'
-//         name="summary"
-//         value={values.summary}
-//         onChange={handleChange}
-//         onBlur={handleBlur}
-//       />
-//       {touched.summary && errors.summary ? errors.summary : null}
-//       <TextField
-//         label="trailer"
-//         variant='outlined'
-//         value={values.trailer}
-//         name="trailer"
-//         onChange={handleChange}
-//         onBlur={handleBlur}
-//       />
-//       {touched.trailer && errors.trailer ? errors.trailer : null}
-
-//       <Button type="submit" variant='contained'onClick={updateUser}>Update Movie</Button>
-//     </form>
-//   )
-// }
 function Update({ details }) {
   const navigate = useNavigate();
 
@@ -418,9 +339,9 @@ function MovieList() {
             <Movie movie={mv}
               id={mv._id}
               editButton={
-                <IconButton style={st} color='secondary' onClick={() => navigate(`/update/${mv.id}`)}><EditIcon /></IconButton>}
+                <IconButton style={st} color='secondary' onClick={() => navigate(`/update/${mv.id}`)}><DriveFileRenameOutlineIcon /></IconButton>}
               deleteButton={
-                <IconButton style={st} color='error' onClick={() => deleteMovie(mv.id)}><DeleteIcon /></IconButton>}
+                <IconButton style={st} color='error' onClick={() => deleteMovie(mv.id)}><DeleteSweepIcon /></IconButton>}
             />
           </div>
         ))}
@@ -455,46 +376,52 @@ function MovieDetail() {
         <div className='movie__specs'>
           <h2 className='movie__name'>{movie.name}
           </h2>
-          <p style={rating} className="movie__rating">⭐{movie.rating}</p>
+          <p style={rating} className="movie__rating">🌟{movie.rating}</p>
         </div>
         <p className='movie__summary'>{movie.summary}</p>
         <Stack spacing={2} direction="row">
           <Button variant="contained"
             onClick={() => navigate(-1)}
-          > <KeyboardBackspaceIcon />Back</Button>
+          > <KeyboardBackspaceIcon />Go Back</Button>
         </Stack>
       </div>
     </div>
   )
 }
+
 function Count() {
-  let [like, setLike] = useState(0);
-  let [disLike, setDisLike] = useState(0);
-  let likeColor = {
-    color: like >= 10 ? "green" : "black"
-  }
-  let disLikeColor = {
-    color: disLike >= 10 ? "red" : "black"
-  }
-  const a = () => setLike(like + 1);
-  const b = () => setDisLike(disLike + 1);
+  const [like, setLike] = useState(0);
+  const [disLike, setDisLike] = useState(0);
+
+  const handleLike = () => setLike(like + 1);
+  const handleDisLike = () => setDisLike(disLike + 1);
+
+  const likeColor = {
+    color: like >= 10 ? 'green' : 'black'
+  };
+
+  const disLikeColor = {
+    color: disLike >= 10 ? 'red' : 'black'
+  };
+
   return (
     <div className='like'>
-      <IconButton color="primary" aria-label="add to shopping cart" onClick={a}>
-        <Badge badgeContent={like} color="primary">
-          👍
-        </Badge>
-      </IconButton>{"    "}
-      <IconButton color="primary" aria-label="add to shopping cart" onClick={b}>
-        <Badge badgeContent={disLike} color="error">
-          👎
-        </Badge>
+      <IconButton color="primary" aria-label="like" onClick={handleLike}>
+        {/* You can use your own like icon here */}
+        <i className="fa fa-thumbs-up like_color"  aria-hidden="true" style={{color:"green"}}></i>
       </IconButton>
-      {/* <button style={likeColor} onClick={a}>👍{like}</button> */}
-      {/* <button style={disLikeColor} onClick={b}>👎{disLike}</button> */}
+
+      <IconButton color="secondary" aria-label="dislike" onClick={handleDisLike}>
+        {/* You can use your own dislike icon here */}
+        <i className="fa fa-thumbs-down dislike_color" aria-hidden="true" style={{color:"blue"}}></i>
+      </IconButton>
+
+      <p  className='color__style' style={likeColor}>Likes: {like}</p>
+      <p className='color__style' style={disLikeColor}>Dislikes: {disLike}</p>
     </div>
-  )
+  );
 }
+
 function Movie({ movie, id, deleteButton, editButton }) {
   const [show, setShow] = useState(true);
   // const roleId=localStorage.getItem("roleId")
@@ -515,7 +442,7 @@ function Movie({ movie, id, deleteButton, editButton }) {
               <InfoIcon />
             </IconButton>
           </h2>
-          <p style={rating} className="movie__rating">⭐{movie.rating}</p>
+          <p style={rating} className="movie__rating star_button"><StarBorderPurple500Icon style={{ fontSize: '1.5em' }} />{movie.rating}</p>
         </div>
         {show ? <p className='movie__summary'>{movie.summary}</p> : null}
       </CardContent>
@@ -543,15 +470,15 @@ function AddColor() {
     background: color,
   };
   let [colorList, setColorList] = useState([
-    "crimson", "orangered", "red"
+    "red", "green", "blue"
   ]
   );
   // let colorList = ["crimson", "orangered", "orange", "red"]
   return (
     <div className='color'>
-      { roleId==0?(<h1 className='style_font'>Welcome Admin</h1>):(<h1 className='style_font'>Hi there! Good day! </h1>)}
+      { roleId==0?(<h1 className='style_font'>Good day,Admin!</h1>):(<h1 className='style_font'>Hi there! Good day! </h1>)}
       <input type="text" style={styles}
-        placeholder="enter the color"
+        placeholder="Enter the color"
         onChange={(event) => setColor(event.target.value)}
         value={color} />
       <button className='style__font' onClick={() => setColorList([...colorList, color])}>Add Color</button>
@@ -672,7 +599,7 @@ function Login() {
       const [passwordIcon,setPasswordIcon]=useState(<FaEyeSlash/>);
   const [formState,setFormState]=useState("success");
   const navigate=useNavigate();
-  const {handleChange,values,handleBlur,handleSubmit}=useFormik({
+  const {handleChange,values,handleBlur,handleSubmit,touched, errors }=useFormik({
       initialValues:{username:"",email:"",password:""},
       onSubmit:async(values)=>{
           console.log(values);
@@ -710,6 +637,7 @@ return (
           value={values.username}
           name='username'
           ></input>
+          {touched.username && errors.username && <div className="error-message">{errors.username}</div>}
           <input type='email' 
          placeholder='Email'
           required=""
@@ -718,6 +646,7 @@ return (
           value={values.email}
           name='email'
           ></input>
+          {touched.email && errors.email && ( <div className="error-message">{errors.email}</div>)}
         <input type={passwordType} 
         name='password'
          placeholder='Password'
@@ -726,9 +655,10 @@ return (
           onBlur={handleBlur}
           value={values.password}
           ></input>
+          {touched.password && errors.password && <div className="error-message">{errors.password}</div>}
           <span className="eye" onClick={handleToggle}>{passwordIcon}</span> 
-        <button id='button' type='submit'>Login</button>
-       {roleId?<Button style={{marginLeft:"170px"}} onClick={()=>logout()}>Logout</Button>:null}
+        <button id='button' className='button_active' type='submit'>Login</button>
+       {roleId?<Button  className="button_skill" style={{marginLeft:"170px"}} onClick={()=>logout()}>Logout</Button>:null}
       </div>
           </form>
           <div className='logout'>
