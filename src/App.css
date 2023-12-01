@@ -150,6 +150,7 @@ margin: 1rem auto;
     }
     .color__style{
       font-family: "Sofia", sans-serif;
+      color: blueviolet !important;
     }
     .fill-blue {
       fill: rgb(242, 14, 170);
